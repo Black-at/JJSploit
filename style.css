@@ -1,0 +1,179 @@
+/* Fond noir pour le site */
+body {
+    background-color: black;
+    display: flex;
+    justify-content: center; /* Centre horizontalement */
+    align-items: center; /* Centre verticalement */
+    height: 100vh; /* Utilise la hauteur totale de la fenêtre */
+    margin: 0;
+    overflow: hidden; /* Évite les scrolls pendant l'animation */
+  }
+  
+  /* Conteneur pour la carte */
+  .card-container {
+    display: flex;
+    flex-direction: column; /* Aligne les éléments verticalement */
+    justify-content: center;
+    align-items: center;
+    height: 100vh; /* Utilise toute la hauteur de la page */
+    z-index: 1; /* Assure que la carte est au-dessus de l'animation */
+    opacity: 0; /* La carte est cachée au départ */
+    transition: opacity 1s ease-in-out; /* Transition de visibilité après l'animation du terminal */
+  }
+  
+  /* Card style */
+  .card {
+    width: 190px;
+    height: 254px;
+    background-image: linear-gradient(163deg, #00ff75 0%, #3700ff 100%);
+    border-radius: 20px;
+    transition: all .3s;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+  }
+  
+  /* Deuxième niveau de la carte */
+  .card2 {
+    width: 190px;
+    height: 254px;
+    background-color: #1a1a1a;
+    border-radius: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: all .2s;
+  }
+  
+  /* Texte sur la carte */
+  .card-text {
+    color: white;
+    font-size: 18px;
+    font-weight: bold;
+    text-align: center;
+  }
+  
+  /* Effet au survol de la card */
+  .card2:hover {
+    transform: scale(0.98);
+    border-radius: 20px;
+  }
+  
+  /* Effet de la carte principale au survol */
+  .card:hover {
+    box-shadow: 0px 0px 30px 1px rgba(0, 255, 117, 0.30);
+  }
+  
+  /* Style du bouton */
+  .btn {
+    margin-top: 20px;
+    padding: 10px 20px;
+    background-color: #00ff75;
+    color: black;
+    border: none;
+    border-radius: 10px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: all 0.3s;
+  }
+  
+  /* Effet au survol du bouton */
+  .btn:hover {
+    background-color: #3700ff;
+    color: white;
+    transform: scale(1.05);
+  }
+  
+  /* Animation terminal */
+  @keyframes blinkCursor {
+    50% {
+      border-right-color: transparent;
+    }
+  }
+  
+  @keyframes typeAndDelete {
+    0%, 10% {
+      width: 0;
+    }
+    45%, 55% {
+      width: 6.2em;
+    }
+    90%, 100% {
+      width: 0;
+    }
+  }
+  
+  .terminal-loader {
+    border: 0.1em solid #333;
+    background-color: #1a1a1a;
+    color: #0f0;
+    font-family: "Courier New", Courier, monospace;
+    font-size: 1em;
+    padding: 1.5em 1em;
+    width: 12em;
+    margin: 50px auto; /* Placer plus haut, à 50px du haut */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    border-radius: 4px;
+    position: fixed;
+    top: 20%; /* Place le terminal plus haut, à 20% du haut de la page */
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 10; /* Affiche le terminal par-dessus tout */
+    overflow: hidden;
+    box-sizing: border-box;
+  }
+  
+  .terminal-header {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 1.5em;
+    background-color: #333;
+    border-top-left-radius: 4px;
+    border-top-right-radius: 4px;
+    padding: 0 0.4em;
+    box-sizing: border-box;
+  }
+  
+  .terminal-controls {
+    float: right;
+  }
+  
+  .control {
+    display: inline-block;
+    width: 0.6em;
+    height: 0.6em;
+    margin-left: 0.4em;
+    border-radius: 50%;
+    background-color: #777;
+  }
+  
+  .control.close {
+    background-color: #e33;
+  }
+  
+  .control.minimize {
+    background-color: #ee0;
+  }
+  
+  .control.maximize {
+    background-color: #0b0;
+  }
+  
+  .terminal-title {
+    float: left;
+    line-height: 1.5em;
+    color: #eee;
+  }
+  
+  .text {
+    display: inline-block;
+    white-space: nowrap;
+    overflow: hidden;
+    border-right: 0.2em solid green; /* Cursor */
+    animation: typeAndDelete 4s steps(11) infinite, blinkCursor 0.5s step-end infinite alternate;
+    margin-top: 1.5em;
+  }
+  
